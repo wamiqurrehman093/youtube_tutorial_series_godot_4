@@ -1,0 +1,103 @@
+[gd_scene load_steps=9 format=3 uid="uid://cexamcd5nrmui"]
+
+[ext_resource type="PackedScene" uid="uid://bb05ut8d0fe4k" path="res://source/first_person_controller/first_person_controller.tscn" id="1_bo047"]
+
+[sub_resource type="Environment" id="Environment_4xmyn"]
+background_mode = 1
+background_color = Color(0.862745, 0.901961, 1, 1)
+ambient_light_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2mdee"]
+albedo_color = Color(0.803922, 0.894118, 0.713726, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_c2ugp"]
+size = Vector3(10, 0.1, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_61yys"]
+size = Vector3(10, 0.1, 10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ia1jx"]
+albedo_color = Color(0.529412, 0.756863, 0.878431, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_lhi7c"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_j2k6u"]
+
+[node name="world" type="Node3D"]
+
+[node name="sky_environment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_4xmyn")
+
+[node name="light" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.183013, 0.707107, -0.683013, -0.183013, 0.707107, 0.683013, 0.965926, 0, 0.258819, 0, 2.25, 0)
+shadow_enabled = true
+
+[node name="ground_environment" type="Node3D" parent="."]
+
+[node name="ground" type="StaticBody3D" parent="ground_environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
+metadata/_edit_group_ = true
+
+[node name="mesh" type="MeshInstance3D" parent="ground_environment/ground"]
+material_override = SubResource("StandardMaterial3D_2mdee")
+mesh = SubResource("BoxMesh_c2ugp")
+
+[node name="shape" type="CollisionShape3D" parent="ground_environment/ground"]
+shape = SubResource("BoxShape3D_61yys")
+
+[node name="box_1" type="StaticBody3D" parent="ground_environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.75, 0.5, 3)
+metadata/_edit_group_ = true
+
+[node name="mesh" type="MeshInstance3D" parent="ground_environment/box_1"]
+material_override = SubResource("StandardMaterial3D_ia1jx")
+mesh = SubResource("BoxMesh_lhi7c")
+
+[node name="shape" type="CollisionShape3D" parent="ground_environment/box_1"]
+shape = SubResource("BoxShape3D_j2k6u")
+
+[node name="box_2" type="StaticBody3D" parent="ground_environment"]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 2.75, 1.5, 3)
+metadata/_edit_group_ = true
+
+[node name="mesh" type="MeshInstance3D" parent="ground_environment/box_2"]
+material_override = SubResource("StandardMaterial3D_ia1jx")
+mesh = SubResource("BoxMesh_lhi7c")
+
+[node name="shape" type="CollisionShape3D" parent="ground_environment/box_2"]
+shape = SubResource("BoxShape3D_j2k6u")
+
+[node name="box_3" type="StaticBody3D" parent="ground_environment"]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 2.75, 0.5, -2.75)
+metadata/_edit_group_ = true
+
+[node name="mesh" type="MeshInstance3D" parent="ground_environment/box_3"]
+material_override = SubResource("StandardMaterial3D_ia1jx")
+mesh = SubResource("BoxMesh_lhi7c")
+
+[node name="shape" type="CollisionShape3D" parent="ground_environment/box_3"]
+shape = SubResource("BoxShape3D_j2k6u")
+
+[node name="box_4" type="StaticBody3D" parent="ground_environment"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 2.75, 1.5, -2.75)
+metadata/_edit_group_ = true
+
+[node name="mesh" type="MeshInstance3D" parent="ground_environment/box_4"]
+material_override = SubResource("StandardMaterial3D_ia1jx")
+mesh = SubResource("BoxMesh_lhi7c")
+
+[node name="shape" type="CollisionShape3D" parent="ground_environment/box_4"]
+shape = SubResource("BoxShape3D_j2k6u")
+
+[node name="box_5" type="StaticBody3D" parent="ground_environment"]
+transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, 2.75, 2.5, -2.75)
+metadata/_edit_group_ = true
+
+[node name="mesh" type="MeshInstance3D" parent="ground_environment/box_5"]
+material_override = SubResource("StandardMaterial3D_ia1jx")
+mesh = SubResource("BoxMesh_lhi7c")
+
+[node name="shape" type="CollisionShape3D" parent="ground_environment/box_5"]
+shape = SubResource("BoxShape3D_j2k6u")
+
+[node name="first_person_controller" parent="." instance=ExtResource("1_bo047")]

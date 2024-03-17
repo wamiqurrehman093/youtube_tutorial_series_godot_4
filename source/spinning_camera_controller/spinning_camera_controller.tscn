@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dr0s5v7fddwo6"]
+
+[ext_resource type="Script" path="res://source/spinning_camera_controller/spinning_camera_controller.gd" id="1_syhxc"]
+
+[node name="spinning_camera_controller" type="Node3D"]
+script = ExtResource("1_syhxc")
+
+[node name="camera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 5, 10)
+current = true
